@@ -69,7 +69,7 @@ export default function Home() {
       } else {
         setError(data.message);
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);

@@ -14,7 +14,7 @@ async function connectToDatabase(): Promise<MongoClient> {
       // Test the connection
       await cachedClient.db('admin').command({ ping: 1 });
       return cachedClient;
-    } catch (error) {
+    } catch {
       // Connection is stale, create a new one
       cachedClient = null;
     }
@@ -43,7 +43,7 @@ function verifyToken(authHeader: string | null): any {
   const token = authHeader.split(' ')[1];
   try {
     return jwt.verify(token, JWT_SECRET);
-  } catch (error) {
+  } catch {
     throw new Error('Invalid token');
   }
 }
